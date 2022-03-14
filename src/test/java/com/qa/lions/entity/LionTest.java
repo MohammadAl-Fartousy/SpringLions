@@ -59,4 +59,3 @@ public class LionTest {
 		assertEquals(lion.getHabitat(), "Thick brush");
 	}
 }
-
