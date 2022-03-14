@@ -65,45 +65,45 @@ public class LionControllerIntegrationtest {
 	@Test
 	public void testCreate2() throws Exception {
 		
-		Lion testLion = new Lion(9, "Donald", "Zoo", "Male");
+		Lion testLion = new Lion(10, "Donald", "Zoo", "Male");
 		String testLionAsJSON = this.mapper.writeValueAsString(testLion);
 		RequestBuilder req = post("/lion/create").content(testLionAsJSON).contentType(MediaType.APPLICATION_JSON);
 
-		Lion testSavedLion = new Lion(2, 15, "Daffy", "Zoo", "Male");
-		String testSavedDuckAsJSON = this.mapper.writeValueAsString(testSavedLion);
+		Lion testSavedLion = new Lion(2, 10, "Donald", "Zoo", "Male");
+		String testSavedLionAsJSON = this.mapper.writeValueAsString(testSavedLion);
 		
 		ResultMatcher checkStatus = status().isCreated();
 	
 		ResultMatcher checkBody = content().json(testSavedLionAsJSON);
 
-		// run the request and check both matchers
+	
 		this.mvc.perform(req).andExpect(checkStatus).andExpect(checkBody);
 	}
 
 	@Test
 	public void testReadById() throws Exception {
-		RequestBuilder req = get("/duck/readById/1");
+		RequestBuilder req = get("/lion/readById/1");
 
 		ResultMatcher checkStatus = status().isOk();
 
-		Duck savedDuck = new Duck(1, 15, "Duck Dodgers", "space", "male");
-		String savedDuckAsJSON = this.mapper.writeValueAsString(savedDuck);
+		Lion savedLion = new Lion(1, 15, "Lion Alex", "space", "male");
+		String savedLionAsJSON = this.mapper.writeValueAsString(savedLion);
 
-		ResultMatcher checkBody = content().json(savedDuckAsJSON);
+		ResultMatcher checkBody = content().json(savedLionAsJSON);
 
 		this.mvc.perform(req).andExpect(checkStatus).andExpect(checkBody);
 	}
 	
 	@Test
 	public void testReadAll() throws Exception {
-		Duck entry = new Duck(1L, 15, "Duck Dodgers", "space", "male");
-		List<Duck> ducks = new ArrayList<>();
-		ducks.add(entry);
-		String ducksOutputAsJson = this.mapper.writeValueAsString(ducks);
+		Lion entry = new Lion(1L, 15, "Lion Alex", "space", "male");
+		List<Lion> lions = new ArrayList<>();
+		lions.add(entry);
+		String lionsOutputAsJson = this.mapper.writeValueAsString(lions);
 		
-		this.mvc.perform(get("/duck/readAll")
+		this.mvc.perform(get("/lion/readAll")
 				.contentType(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk())
-				.andExpect(content().json(ducksOutputAsJson));
+				.andExpect(content().json(lionsOutputAsJson));
 	}
 }

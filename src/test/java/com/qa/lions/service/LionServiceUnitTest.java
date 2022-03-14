@@ -26,7 +26,7 @@ public class LionServiceUnitTest {
 	private LionRepo repo;
 
 	@Test
-	public void createDuckTest() {
+	public void createLionTest() {
 		Lion input = new Lion(3, "Nathon", "Thick brush", "Male");
 		Lion output = new Lion(1L, 3, "Nathon", "Thick brush", "Male");
 
