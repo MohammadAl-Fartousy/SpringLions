@@ -22,7 +22,7 @@ public class Lion {
 
 	@Column
 	@Min(2)
-	@Max(20)
+	@Max(15)
 	private int age;
 	
 	
