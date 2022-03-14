@@ -5,7 +5,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.qa.lions.entity.Lion;
-import com.qa.Lions.repo.LionRepo;
+import com.qa.lions.repo.LionRepo;
 
 @Service
 public class LionService implements ServiceMethods<Lion>{
